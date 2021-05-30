@@ -1,7 +1,3 @@
-var viewScore = document.querySelector("#viewScore");
-viewScore.addEventListener("click", function () {
-  alert("button click");
-});
 // --------------------------Select All Elemets---------------------------------------
 // 0.header
 var counter = document.getElementById("counter");
@@ -90,7 +86,7 @@ function renderQuestion() {
   choiceD.innerHTML = currentQuestion.choiceD;
 }
 
-// --------------------------------Start the Quiz-----------------------------------
+// --------------------------------1 Start the Quiz-----------------------------------
 // function: change the page; start counting
 function startQuiz() {
   quizEndPage.style.display = "none";
@@ -110,7 +106,7 @@ function startQuiz() {
 
   quizPage.style.display = "block";
 }
-// --------------------------------Quiz End page-----------------------------------
+// --------------------------------3 Quiz End page-----------------------------------
 // function: change the page; show your fina score and ask for initial
 function showScore() {
   quizPage.style.display = "none";
@@ -156,7 +152,7 @@ function generateHighscores() {
   }
 }
 
-// --------------------------------Score page-----------------------------------
+// --------------------------------4 Score page-----------------------------------
 // function: display the hight scores
 function showHighscore() {
   startPage.style.display = "none";
@@ -179,3 +175,26 @@ function replayQuiz() {
   score = 0;
   currentQuestionIndex = 0;
 }
+
+// --------------------------------2 Quiz page-----------------------------------
+// function: check answers
+function checkAnswer(answer) {
+  var correct = quizQuestions[currentQuestionIndex].correctAnswer;
+  if (answer === correct && currentQuestionIndex !== finalQuestionIndex) {
+    score++;
+    alert("the answer is correct");
+    currentQuestionIndex++;
+    renderQuestion();
+  } else if (
+    answer !== correct &&
+    currentQuestionIndex !== finalQuestionIndex
+  ) {
+    alert("the answer is incorrect");
+    currentQuestionIndex++;
+    renderQuestion();
+  } else {
+    showScore();
+  }
+}
+// --------------------------------start quiz----------------------------------
+startBtn.addEventListener("click", startQuiz);
