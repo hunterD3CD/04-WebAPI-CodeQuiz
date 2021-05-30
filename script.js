@@ -73,11 +73,14 @@ var quizQuestions = [
 var score = 0;
 var timeLeft = 75;
 var currentQuestionIndex = 0;
-var finalQuestionIndex = quizQuestions.length - 1;
+var finalQuestionIndex = quizQuestions.length;
 var timerInterval;
 // function: cycles the quiz array to generate question and answer
 function renderQuestion() {
   quizEndPage.style.display = "none";
+  if (currentQuestionIndex === finalQuestionIndex) {
+    return showScore();
+  }
 
   var currentQuestion = quizQuestions[currentQuestionIndex];
   question.innerHTML = "<p>" + currentQuestion.question + "</p>";
@@ -92,4 +95,25 @@ function startQuiz() {
   quizEndPage.style.display = "none";
   startPage.style.display = "none";
   renderQuestion();
+
+  // Counter Render
+  timerInterval = setInterval(function () {
+    timeLeft--;
+    counter.textContent = "time:" + timeLeft;
+
+    if (timeLeft === 0) {
+      clearInterval(timerInterval);
+      showScore();
+    }
+  }, 1000);
+
+  quizPage.style.display = "block";
+}
+// --------------------------------Quiz End page-----------------------------------
+function showScore() {
+  quizPage.style.display = "none";
+  quizEndPage.style.display = "flex";
+  clearInterval(timerInterval);
+  finalScore.innerHTML = "Your final score is" + score;
+  initials.value = "";
 }
