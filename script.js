@@ -75,7 +75,7 @@ var timeLeft = 75;
 var currentQuestionIndex = 0;
 var finalQuestionIndex = quizQuestions.length;
 var timerInterval;
-// function: cycles the quiz array to generate question and answer
+// function: change the page; cycles the quiz array to generate question and answer
 function renderQuestion() {
   quizEndPage.style.display = "none";
   if (currentQuestionIndex === finalQuestionIndex) {
@@ -91,6 +91,7 @@ function renderQuestion() {
 }
 
 // --------------------------------Start the Quiz-----------------------------------
+// function: change the page; start counting
 function startQuiz() {
   quizEndPage.style.display = "none";
   startPage.style.display = "none";
@@ -110,6 +111,7 @@ function startQuiz() {
   quizPage.style.display = "block";
 }
 // --------------------------------Quiz End page-----------------------------------
+// function: change the page; show your fina score and ask for initial
 function showScore() {
   quizPage.style.display = "none";
   quizEndPage.style.display = "flex";
@@ -117,3 +119,24 @@ function showScore() {
   finalScore.innerHTML = "Your final score is" + score;
   initials.value = "";
 }
+// event: submit your initial and score
+submitBtn.addEventListener("click", function highscore() {
+  if (initials.value === "") {
+    alert("You mush enter an initial");
+    return false;
+  } else {
+    var savedHighscores =
+      JSON.parse(localStorage.getItem("savedHighscores")) || [];
+    var currentUser = highscoreInputName.value.trim();
+    var currentHightscore = {
+      name: currentUser,
+      score: score,
+    };
+    // change page to score list
+    quizEndPage.style.display = "none";
+    scorePage.style.display = "block";
+    savedHighscores.push(currentHightscore);
+    localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
+    generateHighscores();
+  }
+});
