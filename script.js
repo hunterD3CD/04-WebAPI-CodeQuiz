@@ -127,7 +127,7 @@ submitBtn.addEventListener("click", function highscore() {
   } else {
     var savedHighscores =
       JSON.parse(localStorage.getItem("savedHighscores")) || [];
-    var currentUser = highscoreInputName.value.trim();
+    var currentUser = initials.value.trim();
     var currentHightscore = {
       name: currentUser,
       score: score,
@@ -140,3 +140,42 @@ submitBtn.addEventListener("click", function highscore() {
     generateHighscores();
   }
 });
+
+// function: clear the list and generate a new high score list from local storage
+function generateHighscores() {
+  scoreDisplayName.innerHTML = "";
+  scoreDisplayScore.innerHTML = "";
+  var highscore = JSON.parse(localStorage.getItem("saveHighscores")) || [];
+  for (i = 0; i < highscores.length; i++) {
+    var newNameSpan = document.createElement("li");
+    var newScoreSpan = document.createElement("li");
+    newNameSpan.textContent = highscores[i].name;
+    newScoreSpan.textContent = highscore[i].score;
+    scoreDisplayName.appendChild(newNameSpan);
+    scoreDisplayScore.appendChild(newScoreSpan);
+  }
+}
+
+// --------------------------------Score page-----------------------------------
+// function: display the hight scores
+function showHighscore() {
+  startPage.style.display = "none";
+  quizEndPage.style.display = "none";
+  scorePage.style.display = "block";
+  generateHighscores();
+}
+// function: clear high scores
+function clearScore() {
+  window.localStorage.clear();
+  scoreDisplayName.textContent = "";
+  scoreDisplayScore.textContent = "";
+}
+// function: go back and replay the quiz
+function replayQuiz() {
+  scorePage.style.display = "none";
+  quizEndPage.style.display = "none";
+  startPage.style.display = "flex";
+  timeLeft = 75;
+  score = 0;
+  currentQuestionIndex = 0;
+}
