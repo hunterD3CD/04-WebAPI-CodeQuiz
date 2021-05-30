@@ -5,28 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding Quiz</title>
+    <!-- Bootstrap CDN import -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <!-- CSS import -->
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <!-- ------------------------HTML STRUCTURE: HEADER-------------------------- -->
+    <!-- ----------------------------HTML STRUCTURE: HEADER---------------------- -->
     <header>
-      <button class="viewScore">View high scores</button>
-      <p>time: <span class="time">0</span></p>
+      <button id="viewScore">View high scores</button>
+      <p>time: <span class="counter">0</span></p>
     </header>
-    <!-- ----------------------------HTML STRUCTURE: MAIN---------------------------- -->
-    <main class="content">
-      <section>
+    <!-- ----------------------------HTML STRUCTURE: MAIN------------------------- -->
+    <main class="container">
+      <!-- --------------------------1.front page--------------------------------- -->
+      <div id="start">
         <h1>Coding Quiz Challenge</h1>
         <p>
           Try to answer the following code-related questions within the time
           limit. Keep in mind that incorrect answers will penalize your
           score/time by ten seconds!
         </p>
-      </section>
+        <button>Start Quiz</button>
+      </div>
+      <!-- -------------------------2.starting the quiz pages--------------------- -->
+      <div id="quiz">
+        <div id="questions"><p>Question Placeholder</p></div>
+        <button id="A" onclick="checkAnswer('A')">A</button>
+        <button id="B" onclick="checkAnswer('B')">B</button>
+        <button id="C" onclick="checkAnswer('C')">C</button>
+        <button id="D" onclick="checkAnswer('D')">D</button>
+        <div id="result"></div>
+      </div>
+      <!-- --------------------------3.quiz end pages----------------------------- -->
+      <div id="quizEnd">
+        <div>All done!</div>
+        <div>Your final score is</div>
+        <input type="text" size="30" placeholder="Enter initials" />
+        <button id="submit">Submit</button>
+      </div>
+      <!-- ---------------------------4.score pages------------------------------- -->
+      <div id="scorePages">
+        <div>High score</div>
+        <ul>
+          <li>1.AB-22</li>
+        </ul>
+        <button id="goBack" onclick="replayQuiz()">Go back</button>
+        <button id="clearHighscore" onclick="clearScore()">
+          Clear high scores
+        </button>
+      </div>
     </main>
-    <!-- -----------------------------HTML STRUCTURE: FOOTER------------------------ -->
+    <!-- -----------------------------HTML STRUCTURE: FOOTER--------------------- -->
     <footer></footer>
-
+    <!-- Java import -->
     <script src="./script.js"></script>
   </body>
 </html>

@@ -1,3 +1,16 @@
-h1 {
-  color: brown;
+/* ------------------------------HEADER STYLE---------------------------------- */
+header {
+  background-color: cornsilk;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#viewScore {
+  text-align: left;
+}
+header p {
+  text-align: right;
+  font-size: x-large;
 }
