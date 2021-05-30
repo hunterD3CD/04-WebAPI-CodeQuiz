@@ -2,6 +2,33 @@ var viewScore = document.querySelector("#viewScore");
 viewScore.addEventListener("click", function () {
   alert("button click");
 });
+// --------------------------Select All Elemets---------------------------------------
+// header
+var counter = document.getElementById("counter");
+var viewScoreBtn = document.getElementById("viewScore");
+// 1.start page
+var startPage = document.getElementById("startPage");
+var startBtn = document.getElementById("startBtn");
+// 2.quiz page
+var quizPage = document.getElementById("quizPage");
+var question = document.getElementById("questions");
+var choiceA = document.getElementById("A");
+var choiceB = document.getElementById("B");
+var choiceC = document.getElementById("C");
+var choiceD = document.getElementById("D");
+var resultE1 = document.getElementById("result");
+// 3.end page
+var quizEndPage = document.getElementById("quizEndPage");
+var finalScore = document.getElementById("finalScore");
+var initials = document.getElementById("initials");
+var submitBtn = document.getElementById("submitBtn");
+// 4.score page
+var scorePage = document.getElementById("scorePage");
+var scoreDisplayName = document.getElementById("highScoreInitial");
+var scoreDisplayScore = document.getElementById("highScoreScore");
+var goBackBtn = document.getElementById("goBack");
+var ClearBtn = document.getElementById("clearHighscore");
+
 // --------------------------Create Questions Array-----------------------------------
 var quizQuestions = [
   {

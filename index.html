@@ -21,18 +21,18 @@
     </header>
     <!-- ----------------------------HTML STRUCTURE: MAIN------------------------- -->
     <main class="container">
-      <!-- --------------------------1.front page--------------------------------- -->
-      <div id="start">
+      <!-- --------------------------1.start page--------------------------------- -->
+      <div id="startPage">
         <h1>Coding Quiz Challenge</h1>
         <p>
           Try to answer the following code-related questions within the time
           limit. Keep in mind that incorrect answers will penalize your
           score/time by ten seconds!
         </p>
-        <button>Start Quiz</button>
+        <button id="startBtn">Start Quiz</button>
       </div>
-      <!-- -------------------------2.starting the quiz pages--------------------- -->
-      <div id="quiz">
+      <!-- -------------------------2.the quiz pages------------------------------ -->
+      <div id="quizPage">
         <div id="questions"><p>Question Placeholder</p></div>
         <button id="A" onclick="checkAnswer('A')">A</button>
         <button id="B" onclick="checkAnswer('B')">B</button>
@@ -41,18 +41,22 @@
         <div id="result"></div>
       </div>
       <!-- --------------------------3.quiz end pages----------------------------- -->
-      <div id="quizEnd">
+      <div id="quizEndPage">
         <div>All done!</div>
-        <div>Your final score is</div>
-        <input type="text" size="30" placeholder="Enter initials" />
-        <button id="submit">Submit</button>
+        <div id="finalScore">Your final score is</div>
+        <input
+          type="text"
+          size="30"
+          placeholder="Enter initials"
+          id="initials"
+        />
+        <button id="submitBtn">Submit</button>
       </div>
       <!-- ---------------------------4.score pages------------------------------- -->
-      <div id="scorePages">
+      <div id="scorePage">
         <div>High score</div>
-        <ul>
-          <li>1.AB-22</li>
-        </ul>
+        <div id="highScoreInitial"></div>
+        <div id="hightScoreScore"></div>
         <button id="goBack" onclick="replayQuiz()">Go back</button>
         <button id="clearHighscore" onclick="clearScore()">
           Clear high scores
