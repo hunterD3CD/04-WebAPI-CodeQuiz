@@ -3,7 +3,7 @@ viewScore.addEventListener("click", function () {
   alert("button click");
 });
 // --------------------------Select All Elemets---------------------------------------
-// header
+// 0.header
 var counter = document.getElementById("counter");
 var viewScoreBtn = document.getElementById("viewScore");
 // 1.start page
@@ -11,7 +11,7 @@ var startPage = document.getElementById("startPage");
 var startBtn = document.getElementById("startBtn");
 // 2.quiz page
 var quizPage = document.getElementById("quizPage");
-var question = document.getElementById("questions");
+var question = document.getElementById("question");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
@@ -67,4 +67,29 @@ var quizQuestions = [
     correctAnswer: "A",
   },
 ];
-console.log(quizQuestions[2]);
+
+// --------------------------------Render Questions-----------------------------------
+// other variable
+var score = 0;
+var timeLeft = 75;
+var currentQuestionIndex = 0;
+var finalQuestionIndex = quizQuestions.length - 1;
+var timerInterval;
+// function: cycles the quiz array to generate question and answer
+function renderQuestion() {
+  quizEndPage.style.display = "none";
+
+  var currentQuestion = quizQuestions[currentQuestionIndex];
+  question.innerHTML = "<p>" + currentQuestion.question + "</p>";
+  choiceA.innerHTML = currentQuestion.choiceA;
+  choiceB.innerHTML = currentQuestion.choiceB;
+  choiceC.innerHTML = currentQuestion.choiceC;
+  choiceD.innerHTML = currentQuestion.choiceD;
+}
+
+// --------------------------------Start the Quiz-----------------------------------
+function startQuiz() {
+  quizEndPage.style.display = "none";
+  startPage.style.display = "none";
+  renderQuestion();
+}
