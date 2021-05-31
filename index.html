@@ -16,7 +16,7 @@
   <body>
     <!-- ----------------------------HTML STRUCTURE: HEADER---------------------- -->
     <header>
-      <button id="viewScore">View high scores</button>
+      <button id="viewScore" onclick="showHighscore()">View high scores</button>
       <!-- <div id="counter">counter placeholder</div> -->
     </header>
     <!-- ----------------------------HTML STRUCTURE: MAIN------------------------- -->
@@ -58,13 +58,12 @@
       <div id="scorePage">
 
         <h2>High score</h2>
-        <div id="highscoreHeader">
-          <h3>Initial</h3>
-          <h3>score</h3>
+        <div class="container">
+          <div class="row text-left">
+            <div class="col-md-6" id="highScoreInitial">initials placeholder</div>
+            <div class="col-md-6" id="highScoreScore">score placeholder</div>
+          </div>
         </div>
-
-        <div id="highScoreInitial">initials placeholder</div>
-        <div id="highScoreScore">score placeholder</div>
         <div id="endGameBtns">
           <button id="goBack" onclick="replayQuiz()">Go back</button>
           <button id="clearHighscore" onclick="clearScore()">

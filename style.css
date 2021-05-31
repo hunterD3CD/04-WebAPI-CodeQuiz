@@ -14,3 +14,16 @@ header p {
   text-align: right;
   font-size: x-large;
 }
+
+/* ------------------------------START PAGE STYLE---------------------------------- */
+#quizPage {
+  display: none;
+}
+
+#quizEndPage {
+  display: none;
+}
+
+#scorePage {
+  display: none;
+}

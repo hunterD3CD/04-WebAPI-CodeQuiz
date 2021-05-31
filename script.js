@@ -149,10 +149,10 @@ submitBtn.addEventListener("click", function highscore() {
 // function: clear the list and generate a new high score list from local storage
 function generateHighscores() {
   // ??????????????????
-  scoreDisplayName.innerHTML = "";
-  scoreDisplayScore.innerHTML = "";
+  scoreDisplayName.innerHTML = "Initial: " + "";
+  scoreDisplayScore.innerHTML = "Score: " + "";
   var highscores =
-    JSON.parse(window.localStorage.getItem("saveHighscores")) || [];
+    JSON.parse(window.localStorage.getItem("savedHighscores")) || [];
   for (i = 0; i < highscores.length; i++) {
     var newNameSpan = document.createElement("li");
     var newScoreSpan = document.createElement("li");
