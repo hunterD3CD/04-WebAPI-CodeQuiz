@@ -17,7 +17,7 @@
     <!-- ----------------------------HTML STRUCTURE: HEADER---------------------- -->
     <header>
       <button id="viewScore">View high scores</button>
-      <p>time: <span class="counter">0</span></p>
+      <!-- <div id="counter">counter placeholder</div> -->
     </header>
     <!-- ----------------------------HTML STRUCTURE: MAIN------------------------- -->
     <main class="container">
@@ -33,6 +33,7 @@
       </div>
       <!-- -------------------------2.the quiz pages------------------------------ -->
       <div id="quizPage">
+        <div id="counter">counter placeholder</div>
         <div id="question"><p>Question Placeholder</p></div>
         <button id="A" onclick="checkAnswer('A')">A</button>
         <button id="B" onclick="checkAnswer('B')">B</button>
@@ -43,7 +44,7 @@
       <!-- --------------------------3.quiz end pages----------------------------- -->
       <div id="quizEndPage">
         <div>All done!</div>
-        <div id="finalScore">Your final score is</div>
+        <div id="finalScore">finalScore Placeholder</div>
         <input
           type="text"
           size="30"
@@ -53,14 +54,23 @@
         <button id="submitBtn">Submit</button>
       </div>
       <!-- ---------------------------4.score pages------------------------------- -->
+      <div id="highscoreContainer">
       <div id="scorePage">
-        <div>High score</div>
-        <div id="highScoreInitial"></div>
-        <div id="hightScoreScore"></div>
-        <button id="goBack" onclick="replayQuiz()">Go back</button>
-        <button id="clearHighscore" onclick="clearScore()">
-          Clear high scores
-        </button>
+
+        <h2>High score</h2>
+        <div id="highscoreHeader">
+          <h3>Initial</h3>
+          <h3>score</h3>
+        </div>
+
+        <div id="highScoreInitial">initials placeholder</div>
+        <div id="highScoreScore">score placeholder</div>
+        <div id="endGameBtns">
+          <button id="goBack" onclick="replayQuiz()">Go back</button>
+          <button id="clearHighscore" onclick="clearScore()">
+            Clear high scores
+          </button>
+      </div>
       </div>
     </main>
     <!-- -----------------------------HTML STRUCTURE: FOOTER--------------------- -->

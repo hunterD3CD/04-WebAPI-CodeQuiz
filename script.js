@@ -16,12 +16,14 @@ var resultE1 = document.getElementById("result");
 // 3.end page
 var quizEndPage = document.getElementById("quizEndPage");
 var finalScore = document.getElementById("finalScore");
-var initials = document.getElementById("initials");
+var highscoreInputName = document.getElementById("initials");
 var submitBtn = document.getElementById("submitBtn");
 // 4.score page
 var scorePage = document.getElementById("scorePage");
+var highscoreContainer = document.getElementById("highscoreContainer");
 var scoreDisplayName = document.getElementById("highScoreInitial");
 var scoreDisplayScore = document.getElementById("highScoreScore");
+var endGameBtns = document.getElementById("endGameBtns");
 var goBackBtn = document.getElementById("goBack");
 var ClearBtn = document.getElementById("clearHighscore");
 
@@ -71,6 +73,7 @@ var timeLeft = 75;
 var currentQuestionIndex = 0;
 var finalQuestionIndex = quizQuestions.length;
 var timerInterval;
+var correct;
 // function: change the page; cycles the quiz array to generate question and answer
 function renderQuestion() {
   quizEndPage.style.display = "none";
@@ -89,8 +92,8 @@ function renderQuestion() {
 // --------------------------------1 Start the Quiz-----------------------------------
 // function: change the page; start counting
 function startQuiz() {
-  quizEndPage.style.display = "none";
   startPage.style.display = "none";
+  quizEndPage.style.display = "none";
   renderQuestion();
 
   // Counter Render
@@ -112,41 +115,49 @@ function showScore() {
   quizPage.style.display = "none";
   quizEndPage.style.display = "flex";
   clearInterval(timerInterval);
-  finalScore.innerHTML = "Your final score is" + score;
-  initials.value = "";
+  finalScore.innerHTML = "Your final score is " + score;
+  highscoreInputName.value = "";
 }
 // event: submit your initial and score
 submitBtn.addEventListener("click", function highscore() {
-  if (initials.value === "") {
+  if (highscoreInputName.value === "") {
     alert("You mush enter an initial");
     return false;
   } else {
     var savedHighscores =
-      JSON.parse(localStorage.getItem("savedHighscores")) || [];
-    var currentUser = initials.value.trim();
+      JSON.parse(window.localStorage.getItem("savedHighscores")) || [];
+    var currentUser = highscoreInputName.value.trim();
     var currentHightscore = {
       name: currentUser,
       score: score,
     };
     // change page to score list
     quizEndPage.style.display = "none";
+    highscoreContainer.style.display = "flex";
     scorePage.style.display = "block";
+    endGameBtns.style.display = "flex";
+
     savedHighscores.push(currentHightscore);
-    localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
+    window.localStorage.setItem(
+      "savedHighscores",
+      JSON.stringify(savedHighscores)
+    );
     generateHighscores();
   }
 });
 
 // function: clear the list and generate a new high score list from local storage
 function generateHighscores() {
+  // ??????????????????
   scoreDisplayName.innerHTML = "";
   scoreDisplayScore.innerHTML = "";
-  var highscore = JSON.parse(localStorage.getItem("saveHighscores")) || [];
+  var highscores =
+    JSON.parse(window.localStorage.getItem("saveHighscores")) || [];
   for (i = 0; i < highscores.length; i++) {
     var newNameSpan = document.createElement("li");
     var newScoreSpan = document.createElement("li");
     newNameSpan.textContent = highscores[i].name;
-    newScoreSpan.textContent = highscore[i].score;
+    newScoreSpan.textContent = highscores[i].score;
     scoreDisplayName.appendChild(newNameSpan);
     scoreDisplayScore.appendChild(newScoreSpan);
   }
@@ -157,7 +168,10 @@ function generateHighscores() {
 function showHighscore() {
   startPage.style.display = "none";
   quizEndPage.style.display = "none";
+  highscoreContainer.style.display = "flex";
   scorePage.style.display = "block";
+  endGameBtns.style.display = "flex";
+
   generateHighscores();
 }
 // function: clear high scores
@@ -191,6 +205,7 @@ function checkAnswer(answer) {
   ) {
     alert("the answer is incorrect");
     currentQuestionIndex++;
+    timeLeft = timeLeft - 20;
     renderQuestion();
   } else {
     showScore();
