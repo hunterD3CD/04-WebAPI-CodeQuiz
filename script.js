@@ -143,6 +143,7 @@ submitBtn.addEventListener("click", function highscore() {
       JSON.stringify(savedHighscores)
     );
     generateHighscores();
+    console.log(window.localStorage);
   }
 });
 
